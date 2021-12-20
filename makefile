@@ -1,21 +1,11 @@
-FLAGS =-Wall -g
-CC = gcc
+CFLAGS = -Wall -g
+
+clean:
+	rm -f *.o stringProg
 
 all: stringProg
 
-stringProg: matala3.o function.a
-	$(CC) $(FLAGS) -o stringProg matala3.o function.a
-
-function.a: matala3.o
-	ar -rcs function.a
-
-matala3.o: matala3.c function.h
-	$(CC) $(FLAGS) -c matala3.c 
-
-function.o: function.c function.h
-	$(CC) $(FLAGS) -c function.c
-
-.PHONY: clean
-clean:
-	rm -f *.o *.a *.so stringProg
-
+stringProg: matala3.o
+	gcc $(CFLAGS) -o stringProg matala3.o
+main.o: matala3.c
+	gcc $(CFLAGS) -c matala3.c
