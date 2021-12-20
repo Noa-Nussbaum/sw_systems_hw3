@@ -3,14 +3,14 @@ CC = gcc
 
 all: stringProg
 
-stringProg: main.o function.a
-	$(CC) $(FLAGS) -o stringProg main.o function.a
+stringProg: matala3.o function.a
+	$(CC) $(FLAGS) -o stringProg matala3.o function.a
 
-function.a: main.o
+function.a: matala3.o
 	ar -rcs function.a
 
-main.o: main.c function.h
-	$(CC) $(FLAGS) -c main.c 
+matala3.o: matala3.c function.h
+	$(CC) $(FLAGS) -c matala3.c 
 
 function.o: function.c function.h
 	$(CC) $(FLAGS) -c function.c
