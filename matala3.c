@@ -105,8 +105,8 @@ void Q2(char *w, char *t)
     char wordatbash[WORD] = {'\0'};
     char reversewordatbash[WORD] = {'\0'};
     char hold[TXT] = {'\0'};
-    int lengtht = strlen(t) - 1;
-    int lengthw = strlen(w) - 1;
+    int lengtht = strlen(t);
+    int lengthw = strlen(w);
     int k = 0;
     int first = 1;
 
