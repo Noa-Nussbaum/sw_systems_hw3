@@ -222,8 +222,12 @@ void Q3(char *w, char *t)
     int editLen = strlen(w);
     int first = 1;
 
+
     for (int j = 0; j < length; j++)
     {
+        if(t[j]==32){
+            continue;
+        }
         int wordlen = strlen(w);
         if (contains(edit, t[j]))
         {
@@ -238,12 +242,15 @@ void Q3(char *w, char *t)
         }
         for (int i = j + 1; i<length && i < i+wordlen; i++)
         {
-          
+            // printf("hold: %s\n",hold);
+            // printf("len: %d\n",editLen);
             if (t[i] == 32 || contains(edit, t[i]))
             {
+                if(contains(edit, t[i])){
+                    editLen--;
+                }
                 hold[k] = t[i];
                 removechar(edit, t[i]);
-                editLen--;
                 k++;
                 if(t[i] == 32){
                     wordlen++;
@@ -256,7 +263,7 @@ void Q3(char *w, char *t)
                 editLen = strlen(w);
                 break;
             }
-            if (editLen == 1)
+            if (editLen == 0)
             {
                 if(first ==0){printf("~");}
                 first=0;
@@ -267,7 +274,6 @@ void Q3(char *w, char *t)
                 editLen = strlen(w);
                 k = 0;
                 break;
-                
             }
         }
     }
@@ -289,7 +295,7 @@ int main()
         word[i] = ch_w;
         i++;
     } while (ch_w != '\t' && ch_w != '\n' && ch_w != ' ');
-    word[i]='\0';
+    word[i-1]='\0';
 
     // to get the txt
     i = 0;
